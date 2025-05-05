@@ -25,7 +25,7 @@ except ImportError:
 # Load dataset
 @st.cache_data
 def load_data():
-    url = 'C://Users//varma//Desktop//household_power_consumption.txt'
+    url = 'https://drive.google.com/file/d/1wUHpMb0D_PJ1Fl3-mW2OcSTj6Q-eGTbs/view?usp=drive_link'
     df = pd.read_csv(url, sep=';', parse_dates={'datetime': ['Date', 'Time']},
                      infer_datetime_format=True, na_values=['?'], low_memory=False)
     df.dropna(inplace=True)
