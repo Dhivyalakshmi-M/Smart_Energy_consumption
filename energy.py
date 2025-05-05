@@ -30,7 +30,8 @@ import requests
 @st.cache_data
 def load_data():
     # URL for the GitHub ZIP file
-    zip_url = 'https://github.com/Dhivyalakshmi-M/Smart_Energy_consumption/blob/main/household_power_consumption.zip'
+    zip_url = 'https://github.com/Dhivyalakshmi-M/Smart_Energy_consumption/raw/main/household_power_consumption.zip'
+
 
     # Download the ZIP file
     zip_file_path = 'household_power_consumption.zip'
@@ -38,9 +39,19 @@ def load_data():
     with open(zip_file_path, 'wb') as f:
         f.write(r.content)
     
-    # Extract the ZIP file
-    with zipfile.ZipFile(zip_file_path, 'r') as zip_ref:
-        zip_ref.extractall()
+    # Check if the file exists after downloading
+    if os.path.exists(zip_file_path):
+        try:
+            # Extract the ZIP file
+            with zipfile.ZipFile(zip_file_path, 'r') as zip_ref:
+                zip_ref.extractall()
+        except zipfile.BadZipFile:
+            st.error("The downloaded file is not a valid ZIP file. Please check the URL or file.")
+            return None  # Return None to indicate failure
+    else:
+        st.error("Failed to download the ZIP file.")
+        return None  # Return None to indicate failure
+
 
     # Assuming the CSV file is in the root of the ZIP file
     csv_file = 'household_power_consumption.txt'  # Or the name of your extracted CSV file
@@ -55,7 +66,7 @@ def load_data():
     
     # Optional: Remove the ZIP file after extraction to save space
     os.remove(zip_file_path)
-
+    
     return df
 
 
