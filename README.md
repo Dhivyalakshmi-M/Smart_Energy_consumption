@@ -33,16 +33,6 @@ A Streamlit-based interactive dashboard for analyzing, forecasting, and optimizi
 - **Machine Learning**: Scikit-learn, ARIMA (statsmodels), LSTM (Keras + TensorFlow)
 
 ---
-
-## 📁 Dataset
-
-- **Household Power Consumption Data**  
-  - **File Format**: `.txt`
-  - **Dataset Source**: [Link to Dataset (if available online)](URL)
-  - **Note**: Update the `load_data()` function to point to your local file or cloud-based dataset.
-
----
-
 ## 🚀 How to Run
 
 ### 1. Install Dependencies
