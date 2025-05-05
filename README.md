@@ -24,6 +24,16 @@ A Streamlit-based interactive dashboard for analyzing, forecasting, and optimizi
   MAE, RMSE, R² values shown in clean tables.
 
 ---
+requirements.txt:
+
+streamlit==1.45.0
+pandas==2.2.3
+numpy==2.2.5
+matplotlib==3.8.4
+seaborn==0.13.2
+scikit-learn==1.5.0
+plotly==5.22.0
+pyarrow==20.0.0
 
 ## 🧰 Tech Stack
 
