@@ -21,17 +21,43 @@ except ImportError:
     import os
     os.system('pip install matplotlib')  # Installs matplotlib if not already installed
     import matplotlib.pyplot as plt
+import zipfile
+import os
+import streamlit as st
+import requests
 
-# Load dataset
+# Cache decorator to avoid reloading the data unnecessarily
 @st.cache_data
 def load_data():
-    url = 'https://drive.google.com/file/d/1wUHpMb0D_PJ1Fl3-mW2OcSTj6Q-eGTbs/view?usp=drive_link'
-    df = pd.read_csv(url, sep=';', parse_dates={'datetime': ['Date', 'Time']},
+    # URL for the GitHub ZIP file
+    zip_url = 'https://github.com/yourusername/yourrepository/raw/main/household_power_consumption.zip'
+
+    # Download the ZIP file
+    zip_file_path = 'household_power_consumption.zip'
+    r = requests.get(zip_url)
+    with open(zip_file_path, 'wb') as f:
+        f.write(r.content)
+    
+    # Extract the ZIP file
+    with zipfile.ZipFile(zip_file_path, 'r') as zip_ref:
+        zip_ref.extractall()
+
+    # Assuming the CSV file is in the root of the ZIP file
+    csv_file = 'household_power_consumption.txt'  # Or the name of your extracted CSV file
+
+    # Load the CSV file into a pandas DataFrame
+    df = pd.read_csv(csv_file, sep=';', parse_dates={'datetime': ['Date', 'Time']},
                      infer_datetime_format=True, na_values=['?'], low_memory=False)
-    df.dropna(inplace=True)
-    df['Global_active_power'] = df['Global_active_power'].astype(float)
-    df.set_index('datetime', inplace=True)
+    
+    df.dropna(inplace=True)  # Drop missing values
+    df['Global_active_power'] = df['Global_active_power'].astype(float)  # Convert to float
+    df.set_index('datetime', inplace=True)  # Set datetime as index
+    
+    # Optional: Remove the ZIP file after extraction to save space
+    os.remove(zip_file_path)
+
     return df
+
 
 # Feature Engineering (adding additional features)
 def add_features(data):
