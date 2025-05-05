@@ -8,4 +8,5 @@ scikit-learn==1.5.0
 statsmodels==0.14.2
 keras==3.3.3
 tensorflow==2.16.1
+fsspec
 
