@@ -1,7 +1,6 @@
 import streamlit as st
 import pandas as pd
 import numpy as np
-import matplotlib.pyplot as plt
 import seaborn as sns
 import plotly.express as px
 from sklearn.preprocessing import MinMaxScaler
@@ -11,6 +10,12 @@ from statsmodels.tsa.arima.model import ARIMA
 from keras.models import Sequential
 from keras.layers import LSTM, Dense
 from datetime import timedelta
+try:
+    import matplotlib.pyplot as plt
+except ImportError:
+    import os
+    os.system('pip install matplotlib')  # Installs matplotlib if not already installed
+    import matplotlib.pyplot as plt
 
 # Load dataset
 @st.cache_data
