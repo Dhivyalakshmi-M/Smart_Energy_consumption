@@ -115,7 +115,7 @@ Edit
 streamlit
 pandas
 numpy
-matplotlib
+matplotlib==3.7.0
 seaborn
 plotly
 scikit-learn
