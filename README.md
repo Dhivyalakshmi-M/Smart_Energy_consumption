@@ -35,6 +35,20 @@ A Streamlit-based interactive dashboard for analyzing, forecasting, and optimizi
 - **Visualization**: Matplotlib, Seaborn, Plotly  
 - **Machine Learning**: Scikit-learn, ARIMA (statsmodels), LSTM (Keras + TensorFlow)
 
+- requirements.txt
+txt
+Copy
+Edit
+streamlit
+pandas
+numpy
+matplotlib
+seaborn
+plotly
+scikit-learn
+statsmodels
+keras
+
 ---
 
 ## 📁 Dataset
