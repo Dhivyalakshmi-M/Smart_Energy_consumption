@@ -30,7 +30,7 @@ import requests
 @st.cache_data
 def load_data():
     # URL for the GitHub ZIP file
-    zip_url = 'https://github.com/yourusername/yourrepository/raw/main/household_power_consumption.zip'
+    zip_url = 'https://github.com/Dhivyalakshmi-M/Smart_Energy_consumption/blob/main/household_power_consumption.zip'
 
     # Download the ZIP file
     zip_file_path = 'household_power_consumption.zip'
