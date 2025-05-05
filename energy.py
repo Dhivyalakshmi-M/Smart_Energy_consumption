@@ -1,7 +1,12 @@
 import streamlit as st
 import pandas as pd
 import numpy as np
-import seaborn as sns
+try:
+    import seaborn as sns
+except ImportError:
+    import os
+    os.system('pip install seaborn')  # Installs seaborn if not already installed
+    import seaborn as sns
 import plotly.express as px
 from sklearn.preprocessing import MinMaxScaler
 from sklearn.ensemble import RandomForestRegressor
