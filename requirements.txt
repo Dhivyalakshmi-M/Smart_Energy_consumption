@@ -1,6 +1,6 @@
 streamlit==1.45.0
 pandas==2.2.3
-numpy==2.2.5
+numpy==1.26.4
 matplotlib==3.8.4
 seaborn==0.13.2
 plotly==5.22.0
@@ -8,3 +8,4 @@ scikit-learn==1.5.0
 statsmodels==0.14.2
 keras==3.3.3
 tensorflow==2.16.1
+
